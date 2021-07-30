@@ -80,9 +80,9 @@ def add_page(request, category_name_slug):
 def register(request):
   registered = False
 
-  if request.method == 'post':
-    user_form = UserForm(request.post)
-    profile_form = UserProfileForm(request.post)
+  if request.method == 'POST':
+    user_form = UserForm(request.POST)
+    profile_form = UserProfileForm(request.POST)
 
     if user_form.is_valid() and profile_form.is_valid():
       user = user_form.save()
@@ -108,15 +108,15 @@ def register(request):
   return render(request,'rango/register.html',context={'user_form':user_form,'profile_form':profile_form,'registered':registered})
 
 def user_login(request):
-  if request.method == 'post':
-    username = request.post.get('username')
-    password = request.post.get('password')
+  if request.method == 'POST':
+    username = request.POST.get('username')
+    password = request.POST.get('password')
 
     user = authenticate(username=username,password=password)
 
     if user:
       if user.is_active:
-        login(request.user)
+        login(request,user)
         return redirect(reverse('rango:index'))
       else:
         return HttpResponse("Your Rango account is disabled.")
