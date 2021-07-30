@@ -17,7 +17,7 @@
       <ul>
       {% for category in categories %}
         <li>
-          <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+          <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
         </li>
       {% endfor %}
       </ul>
@@ -35,7 +35,7 @@
         {% endfor %}
       </ul>
       {% else %}
-        <strong>No pages.</strong>
+        <strong>There are no pages present.</strong>
       {% endif %}
     </div>
 
