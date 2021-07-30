@@ -128,3 +128,12 @@ STATICFILES_DIRS = [STATIC_DIR]
 # Media files
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+# Password hash
+PASSWORD_HASHERS=(
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
+# login
+LOGIN_URL = 'rango:login'
